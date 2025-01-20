@@ -4,18 +4,19 @@ import AppFooter from './components/AppFooter.vue'
 import AppShop from './components/Shop/AppShop.vue'
 import AppCart from './components/Cart/AppCart.vue'
 import data from './data/product'
-
-import { reactive, computed } from 'vue'
-import type { ProductInterface } from './interfaces'
-import type { ProductCartInterface } from './interfaces';
+import { DEFAULT_FILTERS}  from './data/filter'
+import { reactive, computed, onUpdated } from 'vue'
+import type { ProductInterface, ProductCartInterface, FilterInterface, FilterUpdate } from './interfaces'
 
 
 const state = reactive<{
   products: ProductInterface[]
   cart: ProductCartInterface[]
+  filters: FilterInterface
 }>({
   products: data,
   cart: [],
+  filters: { ...DEFAULT_FILTERS }
 })
 
 function addProductToCart(productId: number): void {
@@ -45,7 +46,38 @@ function removeProductFromCart(productId: number): void {
   }
 }
 
+function updateFilter(filterUpdate: FilterUpdate){
+  if (filterUpdate.search !== undefined) {
+    state.filters.search = filterUpdate.search;
+  }
+  else if (filterUpdate.priceRange !== undefined) {
+    state.filters.priceRange = filterUpdate.priceRange;
+  }
+  else if (filterUpdate.category !== undefined) {
+    state.filters.category = filterUpdate.category;
+  } else {
+    state.filters = { ...DEFAULT_FILTERS };
+  }
+}
+
+
 const cartEmpty = computed(() => state.cart.length === 0);
+
+const filteredProducts = computed(() => {
+  return state.products.filter((product) => {
+    if (
+      product.title.toLocaleLowerCase().startsWith(state.filters.search.toLocaleLowerCase()) &&
+      product.price >= state.filters.priceRange[0] &&
+      product.price <= state.filters.priceRange[1] &&
+      (product.category === state.filters.category || state.filters.category ==='all')
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+})
+
 
 </script>
 
@@ -57,7 +89,7 @@ const cartEmpty = computed(() => state.cart.length === 0);
     }"
   >
     <AppHeader class="header" />
-    <AppShop :products="state.products" @add-product-to-cart="addProductToCart" class="shop" />
+    <AppShop @update-filter='onUpdated' :products="filteredProducts" @add-product-to-cart="addProductToCart" class="shop" />
     <AppCart
       v-if="!cartEmpty"
       :cart="state.cart"
