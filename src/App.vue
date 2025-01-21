@@ -89,7 +89,13 @@ const filteredProducts = computed(() => {
     }"
   >
     <AppHeader class="header" />
-    <AppShop @update-filter='onUpdated' :products="filteredProducts" @add-product-to-cart="addProductToCart" class="shop" />
+    <AppShop
+      @update-filter='updateFilter'
+      :products="filteredProducts"
+      :filters="state.filters"
+      @add-product-to-cart="addProductToCart"
+      class="shop"
+    />
     <AppCart
       v-if="!cartEmpty"
       :cart="state.cart"

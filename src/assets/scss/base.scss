@@ -52,6 +52,12 @@ body {
   background-color: var(--gray-1);
 }
 
+input {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 8px 15px;
+}
+
 // flex
 
 .d-flex {
@@ -107,6 +113,9 @@ body {
 }
 .m-20 {
   margin: 20px;
+}
+.mb-20 {
+  margin-bottom: 20px;
 }
 .mr-20 {
   margin-right: 20px;

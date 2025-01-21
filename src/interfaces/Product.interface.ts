@@ -5,6 +5,7 @@ export interface ProductInterface {
   title: string
   image: string
   price: number
+  quantity: number
   description: string
   category: Category
 }
