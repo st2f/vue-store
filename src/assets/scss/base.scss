@@ -41,6 +41,7 @@ img {
 a {
   color: var(--text-color);
   text-decoration: none;
+  cursor: pointer;
 }
 
 body {
@@ -159,4 +160,13 @@ input {
   &:hover {
       background-color: var(--success-2);
   }
+}
+
+// card
+
+.card {
+  border: var(--border);
+  border-radius: var(--radius);
+  background-color: white;
+  padding: 30px;
 }

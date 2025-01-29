@@ -1,4 +1,5 @@
-export type Category = 'all'| 'gamer' | 'desktop' | 'streaming'
+import type { Category } from "./type";
+
 
 
 export interface FilterInterface {

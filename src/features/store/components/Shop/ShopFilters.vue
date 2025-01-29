@@ -14,18 +14,17 @@ import type { FilterInterface, FilterUpdate, Category } from '@/interfaces';
 </script>
 
 <template>
-
-<div class="p-20">
-  <section class="mn-20">
-    <h3 class="mn-10">Rechercher</h3>
-    <input
-      :value="filters.search"
-      @input="emit('updateFilter', { search: ($event.target as HTMLInputElement).value})"
-      type="text"
-      placeholder="Rechercher"
-    />
-  </section>
-  <section class="mb-20">
+  <div class="p-20">
+    <section class="mn-20">
+      <h3 class="mn-10">Rechercher</h3>
+      <input
+        :value="filters.search"
+        @input="emit('updateFilter', { search: ($event.target as HTMLInputElement).value})"
+        type="text"
+        placeholder="Rechercher"
+      />
+    </section>
+    <section class="mb-20">
       <h3 class="mb-10">Trier par prix</h3>
       <div
         class="mb-5" :key="priceRange[0]"
