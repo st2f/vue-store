@@ -10,9 +10,8 @@
   --gray-3: #34495e;
   --text-color: #444;
   --text-primary-color: #ffffff;
-
-  --border: 1px solid var(--gray-2) --border-radius: 4px;
-
+  --border: 1px solid var(--gray-2);
+  --border-radius: 4px;
   --font-family: 'Roboto', sans-serif;
 }
 
@@ -53,10 +52,24 @@ body {
   background-color: var(--gray-1);
 }
 
-input {
+input,
+textarea,
+select {
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 8px 15px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-3);
+}
+
+.form-error {
+  color: var(--danger-1);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 // flex

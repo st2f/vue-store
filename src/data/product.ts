@@ -2,7 +2,6 @@ import type { ProductInterface } from "@/interfaces";
 
 export default [
   {
-    id: 1,
     image: 'src/assets/images/screenshot.png',
     title: 'Macbook Pro',
     description:
@@ -11,7 +10,6 @@ export default [
     category: 'streaming'
   },
   {
-    id: 2,
     image: 'src/assets/images/screenshot.png',
     title: 'Levono Pro',
     description:
@@ -20,7 +18,6 @@ export default [
     category: 'streaming'
   },
   {
-    id: 3,
     image: 'src/assets/images/screenshot.png',
     title: 'Rider',
     description:
@@ -29,7 +26,6 @@ export default [
     category: 'desktop'
   },
   {
-    id: 4,
     image: 'src/assets/images/screenshot.png',
     title: 'LDLC benolo',
     description:
@@ -38,7 +34,6 @@ export default [
     category: 'gamer'
   },
   {
-    id: 5,
     image: 'src/assets/images/screenshot.png',
     title: 'Asus gamer',
     description:
@@ -47,7 +42,6 @@ export default [
     category: 'desktop'
   },
   {
-    id: 6,
     image: 'src/assets/images/screenshot.png',
     title: 'Rog desktop',
     description:
@@ -56,7 +50,6 @@ export default [
     category: 'gamer'
   },
   {
-    id: 7,
     image: 'src/assets/images/screenshot.png',
     title: 'MSI play',
     description:
@@ -65,7 +58,6 @@ export default [
     category: 'gamer'
   },
   {
-    id: 8,
     image: 'src/assets/images/screenshot.png',
     title: 'Think pad',
     description:

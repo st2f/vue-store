@@ -5,6 +5,7 @@ import Store from './features/store/Store.vue';
 import Admin from './features/admin/Admin.vue';
 import {reactive, type Component as C} from 'vue'
 import type { Page } from './interfaces';
+import { seed } from './data/seed';
 
 const state = reactive<{
   page: Page
@@ -21,6 +22,10 @@ const pages: { [s: string]: C } = {
 function navigate(page: Page): void {
   state.page = page;
 }
+
+//seed('projectproducts');
+// to post / get info for 10h
+// https://restapi.fr/api/projectproducts
 </script>
 
 <template>
