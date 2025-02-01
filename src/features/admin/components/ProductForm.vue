@@ -15,7 +15,7 @@ const validationSchema = toTypedSchema(
   z.object({
     title: z.string(required)
       .min(1, { message: 'At least 1 char'})
-      .max(20, { message: 'At most 20 chars'}),
+      .max(25, { message: 'At most 25 chars'}),
       image: z.string(required),
     price: z.number(required)
       .min(0, { message: 'Must be > 0'})
@@ -39,7 +39,7 @@ const category = useField('category');
 
 const trySubmit = handleSubmit(async (formValues, { resetForm}) => {
   try {
-    await fetch('https://restapi.fr/api/vuetestproducts', {
+    await fetch('https://restapi.fr/api/projectproducts', {
       method: 'POST',
       body: JSON.stringify(formValues),
       headers: {

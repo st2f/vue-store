@@ -11,7 +11,7 @@ const totalPrice = computed(() =>
   props.cart.reduce((acc, product) => acc + product.price * product.quantity, 0)
 );
 const emit = defineEmits<{
-  (e: 'removeProductFromCart', productId: number): void;
+  (e: 'removeProductFromCart', productId: string): void;
 }>();
 </script>
 
