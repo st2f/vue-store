@@ -31,7 +31,7 @@ const state = reactive<{
 
 provide(pageKey, toRef(state, 'page'));
 
-watch([() => state.filters.priceRange, () => state.filters.category], () => {
+watch(state.filters, () => {
   state.page = 1
   state.products = [];
 })
@@ -90,7 +90,9 @@ const cartEmpty = computed(() => state.cart.length === 0);
 const filteredProducts = computed(() => {
 	return state.products.filter((product) => {
 		if (
-			product.title.toLocaleLowerCase().startsWith(state.filters.search.toLocaleLowerCase())
+			product.title
+      .toLocaleLowerCase()
+      .startsWith(state.filters.search.toLocaleLowerCase())
 		) {
 			return true;
 		} else {
@@ -101,7 +103,7 @@ const filteredProducts = computed(() => {
 </script>
 
 <template>
-	<div class="store-container" :class="{ 'grid-empty': cartEmpty }">
+	<div class="d-flex flex-column">
 		<AppShop
       @update-filter="updateFilter"
 			@add-product-to-cart="addProductToCart"
@@ -109,30 +111,15 @@ const filteredProducts = computed(() => {
       :products="filteredProducts"
 			:filters="state.filters"
       :more-results="state.moreResults"
-      class="shop"
 		/>
 		<AppCart
 			v-if="!cartEmpty"
 			:cart="state.cart"
-			class="cart"
 			@remove-product-from-cart="removeProductFromCart"
 		/>
 	</div>
 </template>
 
 <style scoped lang="scss">
-.store-container {
-	display: grid;
-	grid-template-columns: 75% 25%;
-}
 
-.grid-empty {
-	grid-template-areas: "header" "shop" "footer";
-	grid-template-columns: 100%;
-}
-
-.cart {
-	border-left: var(--border);
-	background-color: white;
-}
 </style>
