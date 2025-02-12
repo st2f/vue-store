@@ -35,7 +35,7 @@ function navigate(page: Page): void {
         <Component :is="pages[state.page]" />
       </Suspense>
     </div>
-    <AppFooter class="footer" />
+    <AppFooter class="footer hide-xs" />
   </div>
 </template>
 

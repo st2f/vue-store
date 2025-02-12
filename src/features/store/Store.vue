@@ -9,7 +9,7 @@ import type {
 	FilterInterface,
 	FilterUpdate,
 } from "../../interfaces";
-import { DEFAULT_FILTERS } from "../../data/filter.ts";
+import { DEFAULT_FILTERS } from "./data/filter.ts";
 import { fetchProduct } from "@/shared/services/product.service.ts";
 import { pageKey } from '../../shared/injectionKeys/pageKey';
 
@@ -31,7 +31,7 @@ const state = reactive<{
 
 provide(pageKey, toRef(state, 'page'));
 
-watch(state.filters, () => {
+watch([() => state.filters.category, () => state.filters.priceRange], () => {
   state.page = 1
   state.products = [];
 })

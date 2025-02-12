@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Page } from '@/interfaces';
 import { reactive } from 'vue';
+import Calc from '@/components/Calc.vue';
 
 const state = reactive<{
   open: boolean
@@ -48,6 +49,8 @@ const emit = defineEmits<{
         </li>
       </ul>
       <div class="menu-xs-container">
+        <Calc :open="state.open" @close="state.open = false" :transparent="true" />
+
         <i @click="state.open = !state.open" class="fa-solid fa-bars show-xs"></i>
         <Transition>
           <ul @click="state.open = false" v-if="state.open" class="menu card">
@@ -119,6 +122,7 @@ header {
   }
 
   .menu {
+    z-index: 2;
     position:absolute;
     top:20px;
     right:0px;
